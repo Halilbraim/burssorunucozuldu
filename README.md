@@ -43,10 +43,10 @@ Projeyi yerelinizde çalıştırmak için harici bir kütüphaneye veya sunucu k
 
 ```bash
 # Depoyu klonlayın
-git clone https://github.com/Halilbraim/B-y-k--niversite-Tan-t-m-Projesi.git
+git clone https://github.com/Halilbraim/burssorunucozuldu.git
 
 # Proje dizinine girin
-cd B-y-k--niversite-Tan-t-m-Projesi
+cd burssorunucozuldu
 
 # index.html dosyasını doğrudan tarayıcınızda açın veya yerel sunucu başlatın:
 # Python ile:
