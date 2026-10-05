@@ -12,12 +12,24 @@ BursRadar, üniversite öğrencilerinin burs ararken karşılaştığı karmaş�
 
 ## ✨ Öne Çıkan Özellikler
 
-- **🧙‍♂️ 30 Saniyelik Profil Sihirbazı**: Üniversite türü, fakülte/bölüm, sınıf ve mevcut burs durumuna göre anlık analiz.
+- **🧙‍♂️ 30 Saniyelik Profil & Şehir Sihirbazı**: Üniversite türü, fakülte/bölüm, memleket/şehir, sınıf ve mevcut burs durumuna göre anlık analiz.
 - **⚡ Kırmızı Çizgi & Çakışma Dedektörü**:
   - 🟢 **KYK Dostu**: KYK bursu/kredisi varken kesilmeyecek burslar.
   - 🔴 **Tek Özel Burs Kuralı**: Birden fazla özel burs kabul etmeyen vakıfların net uyarısı.
-  - ✨ **Çift Burs Serbest**: Birden fazla bursla birleştirilebilen kurumlar (TÜBİTAK, T3 vb.).
+  - ✨ **Çift Burs Serbest**: Birden fazla bursla birleştirilebilen kurumlar (TÜBİTAK, T3, TOG vb.).
   - 💎 **Tam Karşılıksız**: Geri ödeme veya mecburi hizmet şartı olmayanlar.
+- **📅 Akıllı Başvuru Takvimi & Hatırlatıcı**:
+  - Her bursun kalan gün sayacı (örn. *"🔴 Bugün Son Gün!"*, *"⏳ Son 3 Gün"*).
+  - Tek tıkla **Google Takvim'e Ekle** ve **iCal (.ics)** hatırlatıcı dosyası indirme.
+- **💰 Burs Gelir Simülatörü & Bütçe Planlayıcı**:
+  - Çakışmayan bursları bir araya getirerek aylık ve akademik yıllık net kazancı hesaplama.
+  - Riskli kombinasyonlarda (örn. iki tek burs kuralı uygulayan vakıf) otomatik çakışma uyarısı.
+  - Tek tıkla hazır paketler: *Maksimum Çakışmasız Paket (KYK + TÜBİTAK 2205 + TOG)*, *Teknoloji Paketi (KYK + T3 + ASELSAN)* vb.
+- **📋 e-Devlet Destekli Başvuru Evrak Çantası**:
+  - Burs başvurularında istenen 10 standart resmi belge (Transkript, Öğrenci Belgesi, İkametgah, Vukuatlı Nüfus, Gelir Bordrosu vb.) için interaktif kontrol listesi.
+  - İlgili resmi sayfalara tek tıkla doğrudan yönlendiren e-Devlet bağlantıları ve ilerleme çubuğu.
+- **🗺️ Şehir & Memleket Filtresi**:
+  - İstanbul, Ankara, İzmir & Ege, Deprem Bölgesi İlleri, Doğu & Güneydoğu, Karadeniz ve İç Anadolu/Akdeniz burslarına özel hedefleme ve puan avantajı.
 - **🌱 1. Sınıf & Hazırlık YKS Mantığı**: Yeni başlayan öğrenciler için gereksiz GNO kısıtlaması uygulanmaz; sistem otomatik olarak YKS puanını esas alır.
 - **📊 110 Prestijli Burs Veritabanı**: TEV, Koç, Sabancı, TÜBİTAK, Zorlu, Rönesans, ASELSAN, BAYKAR, T3, İBB, Barolar, Tıp vakıfları ve il kalkınma dernekleri.
 - **⚖️ Yan Yana Burs Karşılaştırıcı**: Seçilen 3 bursa kadar aylık tutarları, süreleri ve şartları tablo halinde kıyaslama.
@@ -31,10 +43,10 @@ Projeyi yerelinizde çalıştırmak için harici bir kütüphaneye veya sunucu k
 
 ```bash
 # Depoyu klonlayın
-git clone https://github.com/Halilbraim/burssorunu-z-ld-.git
+git clone https://github.com/Halilbraim/B-y-k--niversite-Tan-t-m-Projesi.git
 
 # Proje dizinine girin
-cd burssorunu-z-ld-
+cd B-y-k--niversite-Tan-t-m-Projesi
 
 # index.html dosyasını doğrudan tarayıcınızda açın veya yerel sunucu başlatın:
 # Python ile:

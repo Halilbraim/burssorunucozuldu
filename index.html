@@ -6,6 +6,20 @@
   <title>BursRadar | Üniversite Bursları & Akıllı Çakışma Tespit Platformu</title>
   <meta name="description" content="Üniversite öğrencileri için akıllı burs arama motoru. KYK çakışması, başka vakıf bursu kuralı, bölüm şartları ve not ortalamasına göre sana özel bursları anında filtrele!">
   
+  <!-- SEO & Open Graph -->
+  <link rel="canonical" href="https://halilbraim.github.io/B-y-k--niversite-Tan-t-m-Projesi/">
+  <meta property="og:title" content="BursRadar | Üniversite Bursları Akıllı Çakışma Tespit Platformu">
+  <meta property="og:description" content="105+ üniversite bursu, KYK çakışma kontrolü, bölüm eşleştirme ve akıllı profil analizi. Sana özel bursları anında bul!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://halilbraim.github.io/B-y-k--niversite-Tan-t-m-Projesi/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BursRadar | Akıllı Burs Eşleştirme Platformu">
+  <meta name="twitter:description" content="105+ üniversite bursu arasından profiline uygun olanları bul, çakışma kurallarını kontrol et.">
+  <meta name="theme-color" content="#07090e">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>" type="image/svg+xml">
+
   <!-- Modern Fontlar -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,6 +53,26 @@
       </div>
 
       <div class="nav-actions">
+        <!-- Başvuru Takvimi Düğmesi -->
+        <button id="openCalendarBtn" class="nav-btn" title="Son Başvuru Takvimi & Hatırlatıcı">
+          <span class="icon">📅</span>
+          <span class="btn-text">Takvim</span>
+        </button>
+
+        <!-- Burs Gelir Simülatörü Düğmesi -->
+        <button id="openSimulatorBtn" class="nav-btn" title="Burs Gelir Simülatörü & Bütçe Hesabı">
+          <span class="icon">💰</span>
+          <span class="btn-text">Simülatör</span>
+          <span id="simulatorBadge" class="counter-badge">0</span>
+        </button>
+
+        <!-- Evrak Çantası Düğmesi -->
+        <button id="openDocsBtn" class="nav-btn" title="Öğrenci Başvuru Evrak Kontrol Listesi">
+          <span class="icon">📋</span>
+          <span class="btn-text">Evraklar</span>
+          <span id="docsBadge" class="counter-badge">0/10</span>
+        </button>
+
         <!-- Karşılaştırma Sayacı Düğmesi -->
         <button id="openCompareBtn" class="nav-btn" title="Seçilen bursları karşılaştır">
           <span class="icon">⚖️</span>
@@ -181,6 +215,21 @@
           </select>
         </div>
 
+        <!-- Şehir & Memleket Seçimi (Yerel Burs Filtresi) -->
+        <div class="form-group">
+          <label for="profCity">Okuduğun / Yaşadığın Şehir (Memleket)</label>
+          <select id="profCity" class="custom-select">
+            <option value="all">🇹🇷 Tüm Türkiye (Genel Kriter)</option>
+            <option value="istanbul">🏙️ İstanbul (İkamet / Üniversite)</option>
+            <option value="ankara">🏛️ Ankara (İkamet / Üniversite)</option>
+            <option value="izmir_ege">🌊 İzmir &amp; Ege Bölgesi (Manisa, Aydın vb.)</option>
+            <option value="deprem">🆘 Deprem Bölgesi İlleri (Hatay, K.Maraş, Malatya, G.Antep...)</option>
+            <option value="dogu_guneydogu">🏔️ Doğu &amp; Güneydoğu Anadolu (Diyarbakır, Elazığ, Kars...)</option>
+            <option value="karadeniz">🌲 Karadeniz Bölgesi (Trabzon, Rize...)</option>
+            <option value="ic_akdeniz">☀️ İç Anadolu &amp; Akdeniz (Bursa, Antalya, Konya, Adana...)</option>
+          </select>
+        </div>
+
         <!-- Sınıf Seviyesi -->
         <div class="form-group">
           <label for="profClass">Sınıfın</label>
@@ -283,9 +332,11 @@
 
       <!-- Kategori ve Çakışma Hızlı Filtre Butonları -->
       <div class="filter-pills-bar">
-        <button class="filter-pill active" data-filter="all">Tümü (<span class="total-count-val">12</span>)</button>
+        <button class="filter-pill active" data-filter="all">Tümü (<span class="total-count-val">--</span>)</button>
+        <button class="filter-pill" data-filter="urgent-deadline">⏳ Son Günler / Acil</button>
         <button class="filter-pill" data-filter="kyk-friendly">🟢 KYK Dostu</button>
         <button class="filter-pill" data-filter="double-burs">✨ Çift Burs Serbest</button>
+        <button class="filter-pill" data-filter="city-local">🇹🇷 Yerel / Şehir</button>
         <button class="filter-pill" data-filter="muhendislik">💻 Mühendislik</button>
         <button class="filter-pill" data-filter="tip">🩺 Sağlık &amp; Tıp</button>
         <button class="filter-pill" data-filter="temel-bilimler">🔬 Temel Bilimler</button>
@@ -295,12 +346,12 @@
       <!-- Canlı Metrik Şeridi -->
       <div class="metric-ribbon">
         <div class="metric-item">
-          <span class="metric-num" id="statVisibleCount">12</span>
+          <span class="metric-num" id="statVisibleCount">--</span>
           <span class="metric-lbl">Aktif Burs Gösteriliyor</span>
         </div>
         <div class="metric-divider"></div>
         <div class="metric-item">
-          <span class="metric-num" id="statMaxAmount">9.500 ₺</span>
+          <span class="metric-num" id="statMaxAmount">-- ₺</span>
           <span class="metric-lbl">Maksimum Aylık Destek</span>
         </div>
         <div class="metric-divider"></div>
@@ -375,11 +426,137 @@
     </div>
   </div>
 
+  <!-- ==========================================================
+       MODAL 3: AKILLI BAŞVURU TAKVİMİ & ZAMAN ÇİZELGESİ MODALI
+       ========================================================== -->
+  <div id="calendarModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-box calendar-modal-box glass-panel">
+      <div class="compare-header">
+        <div>
+          <h2>📅 Burs Başvuru Takvimi &amp; Ajanda</h2>
+          <p>Son başvuru tarihlerine göre yaklaşan burslar, kalan gün sayaçları ve Google Takvim hatırlatıcıları.</p>
+        </div>
+        <button class="modal-close-btn" id="closeCalendarModalBtn">&times;</button>
+      </div>
+
+      <div class="calendar-filter-bar">
+        <button class="cal-filter-btn active" data-cal-filter="all">Tümü</button>
+        <button class="cal-filter-btn" data-cal-filter="urgent">🔴 Son 3 Gün (Kritik)</button>
+        <button class="cal-filter-btn" data-cal-filter="this-week">⚡ Bu Hafta Bitenler</button>
+        <button class="cal-filter-btn" data-cal-filter="this-month">🟡 Bu Ay Bitenler</button>
+      </div>
+
+      <div class="calendar-timeline-body" id="calendarTimelineBody">
+        <!-- JS ile render edilir -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODAL 4: BURS GELİR SİMÜLATÖRÜ & KOMBİNASYON HESAPLAYICI
+       ========================================================== -->
+  <div id="simulatorModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-box simulator-modal-box glass-panel">
+      <div class="compare-header">
+        <div>
+          <h2>💰 Burs Gelir Simülatörü &amp; Bütçe Planı</h2>
+          <p>Alabileceğin bursları birleştir, aylık/yıllık kazancını hesapla ve çakışma risklerini kontrol et.</p>
+        </div>
+        <button class="modal-close-btn" id="closeSimulatorModalBtn">&times;</button>
+      </div>
+
+      <div class="simulator-body" id="simulatorBody">
+        <!-- JS ile render edilir -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       ÇEKMECE 5: ÖĞRENCİ BAŞVURU EVRAK ÇANTASI (CHECKLIST)
+       ========================================================== -->
+  <div id="docsDrawer" class="drawer-backdrop hidden">
+    <div class="drawer-content docs-drawer-content glass-panel">
+      <div class="drawer-header">
+        <div>
+          <h3>📋 Öğrenci Başvuru Evrak Çantası</h3>
+          <p style="font-size: 0.76rem; color: var(--text-muted); margin-top: 0.2rem;">
+            Tüm burs başvurularında istenen ortak resmi belgeler ve e-Devlet hızlı bağlantıları
+          </p>
+        </div>
+        <button id="closeDocsDrawerBtn" class="icon-btn">&times;</button>
+      </div>
+      
+      <div class="docs-progress-container">
+        <div class="docs-progress-info">
+          <span id="docsProgressText">0 / 10 Belge Hazır (%0)</span>
+          <span id="docsProgressBadge" class="val-tag">Başlanmadı</span>
+        </div>
+        <div class="docs-progress-track">
+          <div id="docsProgressBar" class="docs-progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div id="docsList" class="docs-list">
+        <!-- JS ile render edilir -->
+      </div>
+
+      <div class="docs-footer-actions">
+        <button id="resetDocsBtn" class="ghost-btn" style="font-size: 0.78rem;">🔄 Sıfırla</button>
+        <button id="printDocsBtn" class="ghost-btn" style="font-size: 0.78rem; color: var(--accent-primary-light);">🖨️ Yazdır / PDF</button>
+      </div>
+    </div>
+  </div>
+
   <!-- BİLDİRİM TOASTI -->
   <div id="toast" class="toast-popup" role="alert" aria-live="polite">
     <span class="toast-emoji">✨</span>
     <span id="toastMsg">İşlem tamamlandı</span>
   </div>
+
+  <!-- SAYFA BAŞINA DÖN BUTONU -->
+  <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Sayfanın başına dön" title="Sayfanın Başına Dön">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-radar-icon" style="width: 36px; height: 36px; font-size: 1.1rem;">
+              <span class="radar-sweep"></span>
+              🎯
+            </span>
+            <div class="brand-text">
+              <span class="brand-name" style="font-size: 1.2rem;">Burs<span class="brand-accent">Radar</span></span>
+              <span class="brand-tagline">Akıllı Öğrenci Burs Motoru</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Üniversite öğrencileri için açık kaynaklı, akıllı burs eşleştirme ve çakışma tespit platformu.
+          </p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-link-group">
+            <h4>Platform</h4>
+            <a href="#wizardSection">Profil Sihirbazı</a>
+            <a href="#scholarshipsGrid">Burs Listesi</a>
+          </div>
+          <div class="footer-link-group">
+            <h4>Proje</h4>
+            <a href="https://github.com/Halilbraim/B-y-k--niversite-Tan-t-m-Projesi" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+            <a href="https://github.com/Halilbraim/B-y-k--niversite-Tan-t-m-Projesi/issues" target="_blank" rel="noopener noreferrer">Hata Bildir</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BursRadar — Açık Kaynak (MIT Lisansı). Tüm burs bilgileri ilgili vakıfların resmi kaynaklarından derlenmiştir.</p>
+      </div>
+    </div>
+  </footer>
 
   <!-- Veritabanı ve Uygulama Betikleri -->
   <script src="burslar-data.js"></script>
